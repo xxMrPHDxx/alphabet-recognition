@@ -10,7 +10,10 @@ class Model(tf.keras.models.Sequential):
 		self.add(tf.keras.layers.Dense(100, activation='relu', kernel_initializer='he_uniform'))
 		self.add(tf.keras.layers.Dense(26, activation='softmax'))
 		self.compile(
-			optimizer=tf.keras.optimizers.SGD(lr=0.01, momentum=0.9), 
+			optimizer=tf.keras.optimizers.SGD(
+				learning_rate=tf.Variable(0.01), 
+				momentum=tf.Variable(0.9)
+			), 
 			loss='categorical_crossentropy', 
 			metrics=['accuracy']
 		)
@@ -18,7 +21,3 @@ class Model(tf.keras.models.Sequential):
 if __name__ == '__main__':
 	model = Model()
 	model.load_weights('model')
-	model.save('model.h5')
-	# print(model.summary())
-	# weights = model.get_weights()
-	# print([i.shape for i in weights])
