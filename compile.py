@@ -19,7 +19,7 @@ def get_files():
 			if isfile(file) and file[-4:] == '.png':
 				yield alphabet, file
 	
-def get_samples():
+def get_samples(train_ratio=0.9):
 	letters          = {}
 	for alphabet, file in get_files():
 		if alphabet in letters:
@@ -29,7 +29,7 @@ def get_samples():
 	train, test = [], []
 	for letter in ALPHABETS:
 		arr  = letters[letter]
-		size = int(len(arr)*0.9)
+		size = int(len(arr)*train_ratio)
 		train += arr[:size]
 		test  += arr[size:]
 	return train, test
@@ -50,7 +50,7 @@ def get_label(path):
 if __name__ == '__main__':
 	pool = Pool(16)
 
-	train_data,	test_data = get_samples()
+	train_data,	test_data = get_samples(0.99)
 
 	X_train = np.array(pool.map(get_input, train_data))
 	print('Pickling "x_train.pickle"')
