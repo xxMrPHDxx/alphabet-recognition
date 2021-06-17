@@ -3,4 +3,5 @@ checkpoint
 Datasets.zip
 model.data-00000-of-00001
 model.index
+model.tflite
 *.pickle
