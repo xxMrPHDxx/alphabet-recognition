@@ -11,9 +11,9 @@ if __name__ == '__main__':
 	clock  = pygame.time.Clock()
 	FPS    = 30
 
-	WHITE       = (255, 255, 255)
-	BLACK       = (0, 0, 0)
-	RED         = (255, 0, 0)
+	WHITE       = (255, 255, 255)  # ffffff
+	BLACK       = (0, 0, 0)        # 000000
+	RED         = (255, 0, 0)      # ff0000
 	PIXEL_SCALE = 255*3
 	ALPHABETS   = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
